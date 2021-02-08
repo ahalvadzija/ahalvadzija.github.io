@@ -1,2 +1,2 @@
 # ahalvadzija.github.io
-Wellcome | My Github page
+Welcome | My Github page
