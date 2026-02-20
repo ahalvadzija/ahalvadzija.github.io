@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-stei-blue: #3182ce;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "JetBrains Mono", monospace;
+
+  --color-main-bg: var(--bg);
+  --color-main-text: var(--text);
+  --color-main-border: var(--border);
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #4b5563;
+  --border: #e2e8f0;
+}
+
+.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --muted: #a1a1aa;
+  --border: #1e293b;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.6;
+  transition:
+    background-color 0.15s ease-in-out,
+    color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+svg {
+  stroke-width: 1.8px;
+}
+
+.nav-link {
+  @apply cursor-pointer hover:text-stei-blue hover:underline decoration-2 underline-offset-8 flex items-center text-[var(--muted)];
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease;
+}
+
+.nav-active {
+  @apply text-stei-blue underline decoration-2 underline-offset-8 font-bold;
+}
+
+.project-card {
+  @apply cursor-pointer p-5 rounded-lg border border-[var(--border)] transition-all duration-300;
+}
+
+.social-icon-lucide {
+  @apply transition-all duration-300;
+}
+
+.social-icon-lucide:hover {
+  @apply border-stei-blue text-stei-blue;
+  box-shadow: 0 10px 20px -10px rgba(49, 130, 206, 0.5);
+}
+
+nav a,
+h2,
+.social-icon-lucide svg {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.social-icon-lucide svg {
+  pointer-events: none;
+}
+
+html.dark .sun,
+html:not(.dark) .moon {
+  display: block;
+}
+html.dark .moon,
+html:not(.dark) .sun {
+  display: none;
+}
+
+.social-icon-lucide,
+#theme-toggle,
+img {
+  view-transition-name: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+}
+pre code {
+  @apply antialiased;
+  font-variant-ligatures: common-ligatures;
+}
+
+#scroll-progress-container {
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+#scroll-progress-bar {
+  background-color: #3182ce !important;
+}
+.swup-transition-main {
+  opacity: 1;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  transform: translateY(0);
+}
+
+html.is-animating .swup-transition-main {
+  opacity: 0;
+  transform: translateY(10px);
+}

@@ -1,0 +1,26 @@
+<article class="space-y-2 mb-10">
+  <div class="flex items-center gap-3 text-sm">
+    <div class="flex items-center gap-1.5">
+      <i data-lucide="calendar" class="w-4 h-4"></i>
+      <span class="italic text-[var(--muted)]"
+        >{{ .Date.Format "02 Jan, 2006" }}</span
+      >
+    </div>
+
+    <span class="text-[var(--muted)] opacity-50">•</span>
+
+    <div class="flex items-center gap-1.5 italic text-[var(--muted)]">
+      <span>{{ .ReadingTime }} min read</span>
+    </div>
+  </div>
+
+  <a href="{{ .RelPermalink }}" class="block">
+    <h4
+      class="text-xl font-bold hover:underline cursor-pointer decoration-dashed underline-offset-4 transition-all text-steiBlue"
+    >
+      {{ .Title }}
+    </h4>
+  </a>
+
+  <p class="text-[var(--muted)] leading-relaxed">{{ .Summary }}</p>
+</article>

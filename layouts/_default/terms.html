@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="max-w-3xl mx-auto">
+  <div class="mb-8">
+    <h3 class="text-2xl font-extrabold tracking-tight">Topics</h3>
+    <p class="text-[var(--muted)] mt-2 text-sm">
+      Everything I've written about, indexed by technology.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-4">
+    {{ range .Data.Terms.Alphabetical }}
+    <a
+      href="{{ .Page.RelPermalink }}"
+      class="group flex items-center gap-2 px-4 py-2 bg-stei-blue/5 border border-[var(--border)] rounded-lg hover:border-stei-blue transition-all"
+    >
+      <span
+        class="text-sm font-bold text-[var(--text)] group-hover:text-stei-blue"
+        >#{{ .Page.Title }}</span
+      >
+      <span
+        class="text-xs font-mono text-[var(--muted)] bg-[var(--border)] px-1.5 py-0.5 rounded"
+        >{{ .Count }}</span
+      >
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

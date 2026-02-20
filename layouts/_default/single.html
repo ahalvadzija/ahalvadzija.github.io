@@ -1,0 +1,167 @@
+{{ define "main" }}
+<div
+  id="scroll-progress-container"
+  class="fixed top-0 left-0 w-full h-1 z-50 bg-transparent"
+>
+  <div
+    id="scroll-progress-bar"
+    class="h-full bg-stei-blue w-0 transition-all duration-75 ease-out"
+  ></div>
+</div>
+<article class="max-w-full mx-auto">
+  <header class="mb-8 space-y-4">
+    <h1
+      class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight text-[var(--text)]"
+    >
+      {{ .Title }}
+    </h1>
+
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 text-[var(--muted)]">
+        <i data-lucide="calendar" class="w-4 h-4"></i>
+        <time
+          class="text-sm font-mono tracking-widest italic text-[var(--muted)]"
+        >
+          {{ .Date.Format "02 Jan, 2006" }}
+        </time>
+      </div>
+
+      <span class="text-[var(--muted)] opacity-30">|</span>
+
+      <div class="flex items-center gap-2 text-[var(--muted)]">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+        <span class="text-sm font-mono tracking-widest">
+          {{ .ReadingTime }} min read
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <div
+    class="prose prose-slate dark:prose-invert max-w-none prose-headings:text-[var(--text)] prose-headings:font-extrabold prose-headings:tracking-tight dark:prose-h2:text-white dark:prose-h3:text-gray-100 prose-p:text-[var(--text)] dark:prose-p:text-gray-200 prose-li:text-gray-600 dark:prose-li:text-gray-300 prose-a:text-stei-blue prose-code:text-stei-blue prose-pre:border prose-pre:border-[var(--border)]"
+    data-pagefind-body
+  >
+    {{ .Content }}
+  </div>
+
+  <div class="mt-0 py-8">{{ partial "newsletter.html" . }}</div>
+
+  <div class="flex flex-wrap gap-3 mt-0" data-pagefind-filter="tag">
+    {{ range .Params.tags }} {{ $name := . }} {{ with $.Site.GetPage (printf
+    "/tags/%s" ($name | urlize)) }}
+    <a
+      href="{{ .RelPermalink }}"
+      class="text-xs font-mono tracking-wider text-[var(--muted)] bg-[var(--border)]/30 px-2 py-1 rounded hover:text-stei-blue hover:bg-stei-blue/10 transition-all"
+    >
+      #{{ $name }}
+    </a>
+    {{ end }} {{ end }}
+  </div>
+
+  <div class="mt-6 pt-8">
+    <div
+      class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+    >
+      <div class="flex flex-col gap-4">
+        <h5 class="text-sm font-mono tracking-[0.2em] text-[var(--muted)]">
+          Share this post on:
+        </h5>
+        <div class="flex flex-wrap gap-5">
+          {{ $url := .Permalink }} {{ $title := .Title }}
+
+          <a
+            href="https://twitter.com/intent/tweet?url={{ $url }}&text={{ $title }}"
+            target="_blank"
+            class="text-[var(--muted)] hover:text-stei-blue transition-all hover:-translate-y-1"
+            ><i data-lucide="twitter" class="w-5 h-5"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}"
+            target="_blank"
+            class="text-[var(--muted)] hover:text-stei-blue transition-all hover:-translate-y-1"
+            ><i data-lucide="linkedin" class="w-5 h-5"></i
+          ></a>
+          <a
+            href="https://t.me/share/url?url={{ $url }}&text={{ $title }}"
+            target="_blank"
+            class="text-[var(--muted)] hover:text-stei-blue transition-all hover:-translate-y-1"
+            ><i data-lucide="send" class="w-5 h-5"></i
+          ></a>
+          <a
+            href="mailto:?subject={{ $title }}&body={{ $url }}"
+            class="text-[var(--muted)] hover:text-stei-blue transition-all hover:-translate-y-1"
+            ><i data-lucide="mail" class="w-5 h-5"></i
+          ></a>
+        </div>
+      </div>
+
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="group flex items-center gap-2 text-sm font-mono tracking-widest text-[var(--muted)] hover:text-stei-blue transition-colors"
+      >
+        <span>Back to Top</span>
+        <i
+          data-lucide="chevron-up"
+          class="w-4 h-4 group-hover:-translate-y-1 transition-transform"
+        ></i>
+      </button>
+    </div>
+
+    <nav class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-3 py-4">
+      <div class="flex flex-col">
+        {{ with .PrevInSection }}
+        <span class="text-sm font-mono tracking-widest text-[var(--muted)] mb-2"
+          >Previous</span
+        >
+        <a
+          href="{{ .RelPermalink }}"
+          class="text-sm font-bold hover:text-stei-blue transition-colors flex items-center gap-2 group"
+        >
+          <i
+            data-lucide="chevron-left"
+            class="w-4 h-4 group-hover:-translate-x-1 transition-transform"
+          ></i>
+          {{ .Title }}
+        </a>
+        {{ end }}
+      </div>
+
+      <div class="flex flex-col md:items-end text-right">
+        {{ with .NextInSection }}
+        <span class="text-sm font-mono tracking-widest text-[var(--muted)] mb-2"
+          >Next</span
+        >
+        <a
+          href="{{ .RelPermalink }}"
+          class="text-sm font-bold hover:text-stei-blue transition-colors flex items-center gap-2 group"
+        >
+          {{ .Title }}
+          <i
+            data-lucide="chevron-right"
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+          ></i>
+        </a>
+        {{ end }}
+      </div>
+    </nav>
+  </div>
+</article>
+
+<style>
+  #scroll-progress-container {
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  #scroll-progress-bar {
+    background-color: #3182ce;
+    box-shadow: 0 0 8px rgba(49, 130, 206, 0.4);
+    transition: width 0.1s ease-out;
+  }
+
+  .dark #scroll-progress-bar {
+    background-color: #ffffff !important; /* Čisto bijela */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Bijeli glow */
+  }
+</style>
+{{ end }}

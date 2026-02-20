@@ -1,0 +1,45 @@
+<nav class="max-w-3xl mx-auto px-8 mt-6">
+  <div class="flex justify-between items-center py-4">
+    <a href="{{ "/" | relURL }}" class="text-2xl font-extrabold tracking-tighter">
+      Adnan Halvadžija
+    </a>
+    
+    <div class="flex items-center gap-6 text-[15px] font-medium">
+      <a href="{{ "/projects/" | relURL }}" 
+         class="nav-link {{ if eq .Section "projects" }}nav-active{{ end }}">
+        Projects
+      </a>
+
+      <a href="{{ "/posts/" | relURL }}" 
+         class="nav-link {{ if eq .Section "posts" }}nav-active{{ end }}">
+        Posts
+      </a>
+
+      <a href="{{ "/about/" | relURL }}" 
+         class="nav-link {{ if or (eq .Section "about") (eq .RelPermalink "/about/") }}nav-active{{ end }}">
+        About
+      </a>
+
+<a href="/search/" 
+   class="nav-link flex items-center gap-2 px-2 py-1 rounded-md hover:bg-stei-blue/5 transition-all group" 
+   aria-label="Search">
+  <div class="relative flex items-center justify-center w-9 h-9">
+    <i data-lucide="search" class="w-6 h-6 text-[var(--muted)] group-hover:text-stei-blue transition-colors"></i>
+  </div>
+  <kbd class="hidden md:inline-flex items-center gap-1 px-1.5 py-0.5 border border-[var(--border)] rounded bg-[var(--bg)] text-[10px] font-mono text-[var(--muted)]">
+    <span class="text-[12px]">⌘</span>K
+  </kbd>
+</a>
+
+    <button id="theme-toggle" 
+            class="cursor-pointer focus:outline-none w-9 h-9 flex justify-center items-center transition-transform hover:rotate-12 active:scale-90" 
+            aria-label="Toggle Theme">
+      <i data-lucide="moon-star" class="moon w-6 h-6 text-[var(--muted)] hover:text-stei-blue"></i>
+      <i data-lucide="sun-medium" class="sun w-6 h-6 text-yellow-400"></i>
+    </button>
+  
+</button>
+    </div>
+  </div>
+  <div class="h-[1px] bg-[var(--border)] w-full"></div>
+</nav>

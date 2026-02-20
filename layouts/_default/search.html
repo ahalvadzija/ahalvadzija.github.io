@@ -1,0 +1,97 @@
+{{ define "main" }}
+<div class="max-w-full mx-auto">
+  <div class="mb-8">
+    <div class="mb-4">
+      <h3 class="text-2xl font-extrabold tracking-tight mb-0">Search</h3>
+    </div>
+    <p class="text-gray-500 font-mono text-sm italic">Search any article ...</p>
+  </div>
+
+  <div id="search" class="min-h-[400px]"></div>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script src="/pagefind/pagefind-ui.js"></script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      new PagefindUI({
+        element: "#search",
+        showSubResults: true,
+        showFilters: false,
+        showImages: false,
+        resetStyles: false,
+        bundlePath: "/pagefind/",
+        translations: {
+          placeholder: "Search...", // Promijenio sam sa 'java' na opštiji placeholder
+        },
+      });
+    });
+  </script>
+
+  <style>
+    :root {
+      --pagefind-ui-primary: #3182ce; /* Tvoja stei-blue */
+      --pagefind-ui-text: var(--text);
+      --pagefind-ui-background: var(--bg);
+      --pagefind-ui-border: var(--border);
+      --pagefind-ui-font: "JetBrains Mono", monospace;
+    }
+
+    /* 1. Naslov (Headline) - Tvoja plava boja #3182ce */
+    .pagefind-ui__result-link {
+      @apply text-lg font-bold transition-all duration-200 !important;
+      color: #3182ce !important;
+      text-decoration: none !important;
+    }
+
+    /* 2. HOVER EFEKAT - Isprekidana donja linija */
+    .pagefind-ui__result-link:hover {
+      color: #3182ce !important;
+      text-decoration: underline !important;
+      text-decoration-style: dashed !important; /* Isprekidana linija */
+      text-decoration-thickness: 2px !important; /* Debljina linije */
+      text-underline-offset: 6px !important; /* Razmak između teksta i linije */
+      filter: brightness(1.1);
+    }
+    .pagefind-ui__result-excerpt mark {
+      @apply text-xs font-mono tracking-wider px-2 py-1 rounded transition-all !important;
+      background-color: rgba(49, 130, 206, 0.15) !important;
+      color: #4299e1 !important;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .pagefind-ui__result-excerpt mark:hover {
+      background-color: rgba(49, 130, 206, 0.25) !important;
+      color: #3182ce !important;
+      /* Ako želiš i na markere isprekidanu liniju na hover, otkomentariši ovo: */
+      /* text-decoration: underline dashed 1px; */
+    }
+
+    /* 3. POD-REZULTATI (Strelice) */
+    .pagefind-ui__result-title {
+      @apply text-sm font-bold flex items-center !important;
+      color: #3182ce !important;
+      opacity: 0.9;
+    }
+
+    /* Ostatak tvojih stilova za čišćenje panela ostaje isti */
+    .pagefind-ui__filter-panel,
+    .pagefind-ui__filters,
+    [class*="pagefind-ui__filter"] {
+      display: none !important;
+    }
+
+    .pagefind-ui__result {
+      @apply border-t border-[var(--border)] py-6 !important;
+      list-style-type: none !important;
+    }
+
+    .pagefind-ui__search-input {
+      @apply rounded-lg border border-[var(--border)] py-3 px-5 font-mono !important;
+      background-color: var(--bg) !important;
+      color: var(--text) !important;
+    }
+  </style>
+</div>
+{{ end }}

@@ -1,0 +1,23 @@
+baseURL = 'https://ahalvadzija.me/'
+languageCode = 'en'
+title = 'Adnan Halvadžija'
+theme = []
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = 'github-dark'
+    noClasses = true
+
+[params]
+  description = 'Systems-focused Software Engineer'
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
