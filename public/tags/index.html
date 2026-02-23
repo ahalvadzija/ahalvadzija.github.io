@@ -1,10 +1,20 @@
 <!doctype html>
 <html lang="en" class="dark">
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="/favicon.ico">
 
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+<meta property="og:image" content="http://localhost:1313/images/og-card.jpeg" />
+<meta name="twitter:image" content="http://localhost:1313/images/og-card.jpeg" />
+<link rel="canonical" href="http://localhost:1313/tags/">
 <title>
   
     Tags | Adnan Halvadžija
@@ -23,7 +33,6 @@
     }
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta
     name="description"
     content="Portfolio Adnana Halvadžije - Software Engineer."
@@ -44,59 +53,44 @@
   />
 
   <link rel="stylesheet" href="/css/style.css" />
-
-  <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="alternate" type="application/rss+xml" title="Adnan Halvadžija" href="/index.xml">
 </head>
 
-  </head>
   <body class="antialiased">
-    <nav class="max-w-3xl mx-auto px-8 mt-6">
-  <div class="flex justify-between items-center py-4">
-    <a href="/" class="text-2xl font-extrabold tracking-tighter">
+    <nav class="max-w-3xl mx-auto px-4 sm:px-8 mt-6">
+  <div class="flex flex-col sm:flex-row justify-between items-center py-4 gap-4 sm:gap-0">
+    
+    <a href="/" class="text-xl sm:text-2xl font-extrabold tracking-tighter whitespace-nowrap">
       Adnan Halvadžija
     </a>
     
-    <div class="flex items-center gap-6 text-[15px] font-medium">
-      <a href="/projects/" 
-         class="nav-link ">
-        Projects
-      </a>
+    <div class="flex items-center gap-4 sm:gap-6 text-[15px] font-medium">
+      <a href="/projects/" class="nav-link ">Projects</a>
+      <a href="/posts/" class="nav-link ">Posts</a>
+      <a href="/about/" class="nav-link ">About</a>
 
-      <a href="/posts/" 
-         class="nav-link ">
-        Posts
-      </a>
+      <div class="flex items-center gap-1 sm:gap-2 ml-1">
+        <a href="/search/" 
+           class="flex items-center justify-center w-8 h-8 rounded-md hover:bg-[var(--border)] transition-colors group translate-y-[0.5px]" 
+           aria-label="Search">
+          
+          <span class="inline-flex items-center justify-center w-5 h-5 text-[var(--muted)] group-hover:text-stei-blue social-svg-container"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span>
+        </a>
 
-      <a href="/about/" 
-         class="nav-link ">
-        About
-      </a>
-
-<a href="/search/" 
-   class="nav-link flex items-center gap-2 px-2 py-1 rounded-md hover:bg-stei-blue/5 transition-all group" 
-   aria-label="Search">
-  <div class="relative flex items-center justify-center w-9 h-9">
-    <i data-lucide="search" class="w-6 h-6 text-[var(--muted)] group-hover:text-stei-blue transition-colors"></i>
-  </div>
-  <kbd class="hidden md:inline-flex items-center gap-1 px-1.5 py-0.5 border border-[var(--border)] rounded bg-[var(--bg)] text-[10px] font-mono text-[var(--muted)]">
-    <span class="text-[12px]">⌘</span>K
-  </kbd>
-</a>
-
-    <button id="theme-toggle" 
-            class="cursor-pointer focus:outline-none w-9 h-9 flex justify-center items-center transition-transform hover:rotate-12 active:scale-90" 
-            aria-label="Toggle Theme">
-      <i data-lucide="moon-star" class="moon w-6 h-6 text-[var(--muted)] hover:text-stei-blue"></i>
-      <i data-lucide="sun-medium" class="sun w-6 h-6 text-yellow-400"></i>
-    </button>
-  
-</button>
+        <button id="theme-toggle" 
+                class="cursor-pointer focus:outline-none w-8 h-8 flex justify-center items-center rounded-md hover:bg-[var(--border)] transition-transform hover:rotate-12 active:scale-90 translate-y-[0.5px]" 
+                aria-label="Toggle Theme">
+          
+          
+          <span class="inline-flex items-center justify-center moon w-5 h-5 text-[var(--muted)] hover:text-stei-blue social-svg-container"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon-star-icon lucide-moon-star"><path d="M18 5h4"/><path d="M20 3v4"/><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></span>
+          <span class="inline-flex items-center justify-center sun w-5 h-5 text-yellow-400 social-svg-container"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-medium-icon lucide-sun-medium"><circle cx="12" cy="12" r="4"/><path d="M12 3v1"/><path d="M12 20v1"/><path d="M3 12h1"/><path d="M20 12h1"/><path d="m18.364 5.636-.707.707"/><path d="m6.343 17.657-.707.707"/><path d="m5.636 5.636.707.707"/><path d="m17.657 17.657.707.707"/></svg></span>
+        </button>
+      </div>
     </div>
   </div>
-  <div class="h-[1px] bg-[var(--border)] w-full"></div>
+  
+  <div class="h-[1px] bg-[var(--border)] w-full opacity-50"></div>
 </nav>
-
 
     <main
       id="swup"
@@ -175,251 +169,114 @@
       </a>
     </span>
     <div class="flex items-center gap-4">
-      <a
-        href="https://www.linkedin.com/in/halvadzija-adnan/"
-        target="_blank"
-        class="social-icon-lucide"
-        title="LinkedIn"
-      >
-        <i data-lucide="linkedin"></i>
-      </a>
 
-      <a
-        href="mailto:halvadzija.adnan@gmail.com"
-        class="social-icon-lucide"
-        title="Email"
-      >
-        <i data-lucide="mail"></i>
-      </a>
+<div class="flex items-center gap-2">
+    <a href="https://github.com/ahalvadzija" target="_blank" class="social-icon-lucide" title="GitHub">
+        <span class="inline-flex items-center justify-center w-4 h-4 social-svg-container"><svg
+  viewBox="0 0 1920 1920"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="currentColor"
+  class="w-6 h-6 text-black dark:text-white"
+>
+  <path fill-rule="evenodd"
+    d="M1873.256 674.212c0-122.468-35.728-230.622-106.325-321.88
+    15.712-57.683 32.5-171.972-20.77-313.703-5.596-15.066-17.864-26.796-33.146-32.07
+    -19.155-6.564-122.144-30.347-328.552 110.953-84.157-22.169-172.94-33.576-264.844-34.114
+    -91.582.538-180.366 11.945-264.306 34.114C648.689-23.68 545.7-.005 526.437 6.56
+    c-15.282 5.165-27.55 17.003-33.146 32.177-53.162 141.623-36.374 255.912-20.555 313.594
+    -70.704 91.582-106.54 199.629-106.54 321.88 0 422.826 221.905 557.131 432.188 605.666
+    -46.49 50.903-95.24 125.158-105.68 219.537-71.78 26.044-257.633 78.13-325.109-44.015
+    -3.013-5.596-73.394-137.641-215.017-148.08-25.075 1.184-84.587 4.305-101.052 54.346
+    -18.51 55.961 39.495 97.716 67.906 117.41.538.323 55.745 31.962 93.841 132.045
+    .969 4.628 23.783 114.72 134.951 181.55 87.492 52.731 202.319 63.493 341.252 32.284
+    0 23.46-.323 48.212-.43 63.386l-.324 31.101H796.34l.215-29.81
+    c1.937-161.532 2.045-164.653-30.778-181.656-12.484-6.457-27.012-7.964-40.356-3.659
+    -136.243 41.002-246.98 40.033-320.052-2.798-70.488-41.54-85.985-108.908-88.89-119.67
+    -3.875-10.653-8.072-20.662-12.269-30.24 126.987 145.713 372.138 77.161 463.289 33.792
+    18.833-8.825 30.778-27.765 30.778-48.535 0-149.372 148.295-244.182 149.802-245.15
+    19.371-12.16 28.949-35.19 23.998-57.36-4.95-22.276-23.352-39.065-46.06-41.755
+    -223.626-26.796-452.204-109.338-452.204-518.388 0-106.325 33.577-198.983 99.76-275.175
+    12.915-15.067 16.681-36.052 9.579-54.562-9.793-25.397-36.482-112.782-.323-234.819
+    35.729 4.09 110.845 24.321 231.16 110.307 13.344 9.578 30.455 12.376 46.383 7.856
+    80.497-23.568 170.356-36.267 259.248-36.805 89.321.538 179.073 13.237 259.786 36.805
+    15.927 4.52 32.93 1.722 46.382-7.856 121.176-86.631 196.4-106.433 230.73-110.63
+    36.482 122.145 9.793 209.745 0 235.142-7.21 18.51-3.444 39.603 9.578 54.562
+    66.076 75.977 99.545 168.527 99.545 275.175 0 409.157-229.115 491.161-453.173 517.527
+    -20.985 2.475-38.634 16.896-44.984 37.02-6.456 20.017-.538 42.078 15.067 56.284
+    6.35 5.703 14.958 12.483 25.074 20.231 51.333 39.28 137.211 105.034 137.211 259.571
+    0 85.448-1.399 354.273-1.399 354.273l107.617.539s1.399-269.257
+    1.399-354.812c0-141.838-56.499-229.976-110.845-285.937
+    210.39-48.427 431.65-182.517 431.65-604.696"/>
+</svg></span>
+    </a>
 
-      <a
-        href="https://mastodon.social/@ahalvadzija"
-        target="_blank"
-        class="social-icon-lucide"
-        title="Mastodon"
-      >
-        <i data-lucide="at-sign"></i>
-      </a>
+    <a href="https://www.linkedin.com/in/halvadzija-adnan/" target="_blank" class="social-icon-lucide" title="LinkedIn">
+        <span class="inline-flex items-center justify-center w-4 h-4 social-svg-container"><svg
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  class="w-6 h-6 text-black dark:text-white"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g transform="scale(0.95) translate(0.6,0.6)">
+    <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z"/>
+    <path d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z"/>
+    <path d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd"
+      d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"/>
+  </g>
+</svg></span>
+    </a>
 
-      <a
-        href="https://dev.to/ahalvadzija"
-        target="_blank"
-        class="social-icon-lucide"
-        title="Dev.to"
-      >
-        <i data-lucide="code-2"></i>
-      </a>
+    <a href="https://dev.to/ahalvadzija" target="_blank" class="social-icon-lucide" title="Dev.To">
+        <span class="inline-flex items-center justify-center w-4 h-4 social-svg-container"><svg
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  class="w-6 h-6 text-black dark:text-white"
+  xmlns="http://www.w3.org/2000/svg"
+>
 
-      <a
-        href="https://github.com/ahalvadzija"
-        target="_blank"
-        class="social-icon-lucide"
-        title="GitHub"
-      >
-        <i data-lucide="github"></i>
-      </a>
-    </div>
+  <g transform="scale(1.042) translate(-0.5,-0.5)">
+    <path d="M7.826 10.083a.784.784 0 0 0-.468-.175h-.701v4.198h.701a.786.786 0 0 0 .469-.175c.155-.117.233-.292.233-.525v-2.798c.001-.233-.079-.408-.234-.525zM19.236 3H4.764C3.791 3 3.002 3.787 3 4.76v14.48c.002.973.791 1.76 1.764 1.76h14.473c.973 0 1.762-.787 1.764-1.76V4.76A1.765 1.765 0 0 0 19.236 3zM9.195 13.414c0 .755-.466 1.901-1.942 1.898H5.389V8.665h1.903c1.424 0 1.902 1.144 1.903 1.899v2.85zm4.045-3.562H11.1v1.544h1.309v1.188H11.1v1.543h2.142v1.188h-2.498a.813.813 0 0 1-.833-.792V9.497a.813.813 0 0 1 .792-.832h2.539l-.002 1.187zm4.165 4.632c-.531 1.235-1.481.99-1.906 0l-1.548-5.818h1.309l1.193 4.569 1.188-4.569h1.31l-1.546 5.818z"/>
+  </g>
+</svg></span>
+    </a>
+
+    <a href="https://mastodon.social/@ahalvadzija" target="_blank" class="social-icon-lucide" title="Mastodon">
+        <span class="inline-flex items-center justify-center w-4 h-4 social-svg-container"><svg
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="currentColor"
+  class="w-6 h-6 text-black dark:text-white"
+>
+  <path d="M8 7V12C8 12.5523 7.55228 13 7 13C6.44772 13 6 12.5523 6 12V7C6.00458 5.12141 7.76059 4 9.5 4C10.6307 4 11.4437 4.34086 12 4.83532C12.5563 4.34086 13.3693 4 14.5 4C16.2387 4 17.9942 5.12063 18 6.99875V12C18 12.5523 17.5523 13 17 13C16.4477 13 16 12.5523 16 12V6.99875C15.9406 6.24143 15.1596 6 14.5 6C13.8515 6 13.0672 6.24659 13 6.99875V10C13 10.5523 12.5523 11 12 11C11.4477 11 11 10.5523 11 10V7C10.9403 6.23967 10.1531 6 9.5 6C8.85153 6 8.06716 6.24784 8 7Z"/>
+
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M16 1H8C4.07296 1 1.08597 4.02365 1 7.98924V13C1 18.1146 4.55833 23 10 23H15.48C16.8717 23 18 21.8717 18 20.48C18 19.1132 16.8655 18.0336 15.5 18C15.2181 17.9931 14.8836 17.9965 14.5149 18.0004C12.4361 18.022 9.26795 18.055 8.28321 16.2962C12.8078 17.1259 23 18.5 23 11V8C22.9065 4.03533 19.9339 1 16 1ZM3 13V7.98924C3.11577 5.11381 5.1386 3 8 3H16C18.8671 3 20.8776 5.12583 21 8V11C21 17 10.344 14.8052 7.24254 14.0299C6.62138 13.8746 6 14.3597 6 15C6 16.0843 6.27531 17.0111 6.8592 17.7553C8.53489 19.8912 11.8962 19.9238 14.5184 19.9492C14.8582 19.9525 15.1857 19.9557 15.4954 19.9633C15.7768 19.9703 16 20.1994 16 20.48C16 20.7672 15.7672 21 15.48 21H10C5.65362 21 3 17.016 3 13Z"
+  />
+</svg>
+</span>
+    </a>
+
+    <a href="mailto:halvadzija.adnan@gmail.com" class="social-icon-lucide" title="Email">
+        <span class="inline-flex items-center justify-center w-4 h-4 social-svg-container"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+    </a>
+</div></div>
   </div>
 </footer>
- <script>
+ <script
+  src="/js/main.2d7518956123c16f075440cf8a72b53b0c57a700176ec6bea7e73b1816f026a3.js"
+  integrity="sha256-LXUYlWEjwW8HVEDPinK1OwxXpwAXbsa&#43;p&#43;c7GBbwJqM="
+  defer
+></script>
+
+<script>
   
-  
-  function updateDOM(pageId) {
-    
-    document
-      .querySelectorAll(".page-content")
-      .forEach((p) => p.classList.add("hidden"));
-
-    
-    const target = document.getElementById("page-" + pageId);
-    if (target) target.classList.remove("hidden");
-
-    
-    document
-      .querySelectorAll(".nav-link")
-      .forEach((l) => l.classList.remove("nav-active"));
-    const activeNav = document.getElementById("nav-" + pageId);
-    if (activeNav) activeNav.classList.add("nav-active");
-
-    
-    if (pageId === "home") {
-      document.title = "Adnan Halvadžija";
-    } else {
-      
-      const targetPage = document.getElementById("page-" + pageId);
-      const h1Inside = targetPage ? targetPage.querySelector("h1") : null;
-
-      if (h1Inside) {
-        
-        document.title = `${h1Inside.innerText.trim()} | Adnan Halvadžija`;
-      } else {
-        
-        const cap = pageId.charAt(0).toUpperCase() + pageId.slice(1);
-        document.title = `${cap} | Adnan Halvadžija`;
-      }
-    }
-
+  document.addEventListener("swup:contentReplaced", () => {
+    if (typeof initIcons === "function") initIcons();
+    if (typeof initMagneticEffect === "function") initMagneticEffect();
+    if (typeof initScrollProgress === "function") initScrollProgress();
     window.scrollTo(0, 0);
-    lucide.createIcons(); 
-  }
-
-  
-  
-  function showPage(pageId, pushState = true) {
-    if (pushState) {
-      window.history.pushState({ pageId }, "", `#${pageId}`);
-    }
-
-    if (!document.startViewTransition) {
-      updateDOM(pageId);
-      return;
-    }
-
-    document.startViewTransition(() => updateDOM(pageId));
-  }
-
-  
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  const htmlElement = document.documentElement;
-
-  const setTheme = (isDark) => {
-    htmlElement.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  };
-
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  setTheme(savedTheme === "dark" || (!savedTheme && prefersDark));
-
-  themeToggleBtn.addEventListener("click", () => {
-    const isCurrentlyDark = htmlElement.classList.contains("dark");
-    if (!document.startViewTransition) {
-      setTheme(!isCurrentlyDark);
-      return;
-    }
-    document.startViewTransition(() => setTheme(!isCurrentlyDark));
   });
-
-  
-  document.querySelectorAll(".social-icon-lucide").forEach((icon) => {
-    let frameId = null;
-
-    icon.addEventListener("mousemove", (e) => {
-      const rect = icon.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      
-      if (frameId) cancelAnimationFrame(frameId);
-
-      frameId = requestAnimationFrame(() => {
-        icon.style.transition = "none";
-        const svg = icon.querySelector("svg");
-        if (svg) svg.style.transition = "none";
-
-        icon.style.transform = `translate3d(${x * 0.3}px, ${y * 0.3}px, 0) rotateX(${-y * 0.1}deg) rotateY(${x * 0.1}deg)`;
-        if (svg) {
-          svg.style.transform = `translate3d(${x * 0.1}px, ${y * 0.1}px, 0) scale(1.1)`;
-        }
-      });
-    });
-
-    icon.addEventListener("mouseleave", () => {
-      if (frameId) cancelAnimationFrame(frameId);
-
-      const spring = "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
-      icon.style.transition = spring;
-      icon.style.transform = "translate3d(0, 0, 0) rotateX(0) rotateY(0)";
-
-      const svg = icon.querySelector("svg");
-      if (svg) {
-        svg.style.transition = spring;
-        svg.style.transform = "translate3d(0, 0, 0) scale(1)";
-      }
-    });
-  });
-
-  lucide.createIcons();
-
-  
-  
-  window.addEventListener("popstate", () => {
-    const hash = window.location.hash.replace("#", "") || "home";
-    showPage(hash, false); 
-  });
-
-  
-  window.addEventListener("DOMContentLoaded", () => {
-    const hash = window.location.hash.replace("#", "") || "home";
-    showPage(hash, false);
-  });
-
-  window.scrollTo(0, 0);
-  lucide.createIcons();
-  if (typeof initScrollProgress === "function") initScrollProgress();
 </script>
- 
-    <script
-      src="/js/main.min.f59592350d3970db9ed95eb7f862d6162b2edde92a5889facaa1597c98ea381d.js"
-      integrity="sha256-9ZWSNQ05cNue2V63&#43;GLWFisu3ekqWIn6yqFZfJjqOB0="
-    ></script>
-
-    <script>
-      
-      function updatePageTitle() {
-        const h1Element = document.querySelector("#swup h1");
-        if (h1Element) {
-          const postTitle = h1Element.innerText.trim();
-          
-          if (
-            postTitle === "Adnan Halvadžija" ||
-            window.location.pathname === "/"
-          ) {
-            document.title = "Adnan Halvadžija";
-          } else {
-            document.title = postTitle + " | Adnan Halvadžija";
-          }
-        }
-      }
-
-      
-      function initScrollProgress() {
-        const progressBar = document.getElementById("scroll-progress-bar");
-        if (!progressBar) return;
-
-        if (window._scrollHandler)
-          window.removeEventListener("scroll", window._scrollHandler);
-
-        window._scrollHandler = () => {
-          const winScroll =
-            document.documentElement.scrollTop || document.body.scrollTop;
-          const height =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
-          const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-          progressBar.style.width = scrolled + "%";
-        };
-
-        window.addEventListener("scroll", window._scrollHandler);
-        window._scrollHandler();
-      }
-
-      
-      document.addEventListener("swup:contentReplaced", () => {
-        updatePageTitle();
-        initScrollProgress();
-
-        
-        if (typeof initMagneticEffect === "function") initMagneticEffect();
-        if (typeof lucide !== "undefined") lucide.createIcons();
-
-        window.scrollTo(0, 0);
-      });
-
-      
-      document.addEventListener("DOMContentLoaded", () => {
-        initScrollProgress();
-      });
-    </script>
   </body>
 </html>
