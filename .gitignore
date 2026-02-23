@@ -1,26 +1,47 @@
+# Hugo
+public/
+resources/
+.hugo_build.lock
+
+# Node / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.parcel-cache/
+dist/
+build/
+# Tailwind/CSS output
+assets/css/dist.css
+static/css/style.css
+
+# Pagefind
+static/pagefind/
+
+# Python & Newsletter
 newsletter.py
 __pycache__/
 *-venv/
-*.qodo
 *.pyc
 *.pyo
 *.pyd
+
+# Environment & Secrets
+.env
+.env.*
+*.env
+supabase/config.toml # ALERT: This file may contain sensitive information. Do not commit it to version control.
+
+# Databases & Logs
 *.db
 *.sqlite3
 *.log
+
+# IDE & OS
 .DS_Store
 .idea/
 .vscode/
-.env/
-.env.*
-*.env
-*.bak
-*.tmp
 *.swp
 *.swo
-*.zip
-*.tar.gz
-*.egg-info/
-dist/
-build/  
-node_modules/
+*.bak
+*.tmp
