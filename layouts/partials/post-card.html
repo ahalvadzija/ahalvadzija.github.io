@@ -1,26 +1,30 @@
-<article class="space-y-2 mb-10">
-  <div class="flex items-center gap-3 text-sm">
+<article class="space-y-3 mb-10 group">
+  <div class="flex items-center gap-3 text-[13px] text-[var(--muted)]">
+    
     <div class="flex items-center gap-1.5">
-      <i data-lucide="calendar" class="w-4 h-4"></i>
-      <span class="italic text-[var(--muted)]"
-        >{{ .Date.Format "02 Jan, 2006" }}</span
-      >
+      <span class="inline-flex shrink-0" style="width: 16px; height: 16px;">
+        {{ partial "icon.html" (dict "name" "calendar" "class" "w-full h-full stroke-[2.5]") }}
+      </span>
+      <span class="italic leading-none">{{ .Date.Format "02 Jan, 2006" }}</span>
     </div>
 
-    <span class="text-[var(--muted)] opacity-50">•</span>
+    <span class="opacity-40">•</span>
 
-    <div class="flex items-center gap-1.5 italic text-[var(--muted)]">
-      <span>{{ .ReadingTime }} min read</span>
+    <div class="flex items-center gap-1.5">
+      <span class="inline-flex shrink-0" style="width: 16px; height: 16px;">
+        {{ partial "icon.html" (dict "name" "clock" "class" "w-full h-full stroke-[2.5]") }}
+      </span>
+      <span class="italic leading-none">{{ .ReadingTime }} min read</span>
     </div>
   </div>
 
   <a href="{{ .RelPermalink }}" class="block">
-    <h4
-      class="text-xl font-bold hover:underline cursor-pointer decoration-dashed underline-offset-4 transition-all text-steiBlue"
-    >
+    <h4 class="text-xl font-bold transition-all text-steiBlue group-hover:underline decoration-dashed underline-offset-4">
       {{ .Title }}
     </h4>
   </a>
 
-  <p class="text-[var(--muted)] leading-relaxed">{{ .Summary }}</p>
+  <p class="text-[var(--muted)] leading-relaxed text-[15px]">
+    {{ .Summary }}
+  </p>
 </article>

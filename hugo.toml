@@ -11,9 +11,6 @@ theme = []
     style = 'github-dark'
     noClasses = true
 
-[params]
-  description = 'Systems-focused Software Engineer'
-
 [taxonomies]
   tag = "tags"
   category = "categories"
@@ -21,3 +18,18 @@ theme = []
 [outputs]
   home = ["HTML", "RSS"]
   section = ["HTML", "RSS"]
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "node_modules"
+    target = "assets/node_modules"
+
+# Spojeni params blok
+[params]
+  description = 'Systems-focused Software Engineer'
+  # Ovdje ostavi prazno ili default vrijednosti ako želiš koristiti environment varijable
+  supabaseUrl = "https://nntnofphneyrwkiyijwb.supabase.co"
+  supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5udG5vZnBobmV5cndraXlpandiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NDQ3MTUsImV4cCI6MjA4NzQyMDcxNX0.eChwe9XGC5CCvmJuGFdjnPHNp_LpZaFipApQ2oo1ha4"

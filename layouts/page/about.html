@@ -2,7 +2,7 @@
 <section class="max-w-full mx-auto">
   <h3 class="text-2xl font-extrabold tracking-tight mb-8">About</h3>
 
-  <div class="flex flex-col md:flex-row gap-8 items-start">
+  <div class="flex flex-col md:flex-row gap-8 items-start mb-12">
     <div class="w-48 h-48 md:w-56 md:h-56 shrink-0 mx-auto md:mx-0">
       <img
         src="{{ .Params.profileImage }}"
@@ -16,75 +16,45 @@
     </div>
   </div>
 
-  <div
-    class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-12 border-t border-[var(--border)] mt-12"
+  <div class="h-[1px] bg-[var(--border)] w-full mb-10"></div>
+
+  <h4
+    class="text-sm font-bold mb-6 text-stei-blue uppercase tracking-widest flex items-center gap-2"
   >
-    <div>
-      <h4
-        class="text-sm font-bold mb-4 text-stei-blue uppercase tracking-widest flex items-center gap-2"
+    {{ partial "icon.html" (dict "name" "cpu" "class" "w-4 h-4") }} Tech Stack &
+    Tools
+  </h4>
+
+  <div class="flex flex-wrap gap-2">
+    {{ range .Params.skills }}
+    <span
+      class="px-3 py-1.5 border border-[var(--border)] rounded-md text-[13px] font-medium flex items-center gap-2 hover:border-stei-blue/40 hover:bg-stei-blue/[0.02] transition-all cursor-default"
+    >
+      <span
+        style="color: {{ .color }};"
+        class="inline-flex items-center shrink-0"
       >
-        <i data-lucide="database" class="w-4 h-4"></i>
-        Systems & Data
-      </h4>
-      <ul class="text-[var(--muted)] text-sm space-y-2 font-mono">
-        <li class="flex items-center gap-2">
-          <span class="text-stei-blue/50">›</span> Java (Spring Boot) & Python
-        </li>
-        <li class="flex items-center gap-2">
-          <span class="text-stei-blue/50">›</span> PostgreSQL Optimization
-        </li>
-        <li class="flex items-center gap-2">
-          <span class="text-stei-blue/50">›</span> Redis & NoSQL solutions
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h4
-        class="text-sm font-bold mb-4 text-stei-blue uppercase tracking-widest flex items-center gap-2"
-      >
-        <i data-lucide="cloud" class="w-4 h-4"></i>
-        DevOps & Cloud
-      </h4>
-      <ul class="text-[var(--muted)] text-sm space-y-2 font-mono">
-        <li class="flex items-center gap-2">
-          <span class="text-stei-blue/50">›</span> Docker & Kubernetes
-        </li>
-        <li class="flex items-center gap-2">
-          <span class="text-stei-blue/50">›</span> AWS & Cloudflare
-        </li>
-        <li class="flex items-center gap-2">
-          <span class="text-stei-blue/50">›</span> Automated CI/CD Pipelines
-        </li>
-      </ul>
-    </div>
+        {{ partial
+        "icon.html" (dict "name" .icon "class" "w-3.5 h-3.5 stroke-[1.5]") }}
+      </span>
+      <span class="text-[var(--text)]">{{ .name }}</span>
+    </span>
+    {{ end }}
   </div>
 
   <p
-    class="text-[var(--muted)] leading-relaxed italic border-l-2 border-stei-blue pl-6 mt-12 py-1 bg-stei-blue/[0.03]"
+    class="text-[var(--muted)] leading-relaxed italic border-l-2 border-stei-blue pl-6 mt-12 py-2 bg-stei-blue/[0.03] text-sm"
   >
     "I leverage AI-driven workflows to accelerate delivery without compromising
     on clean, modular code."
   </p>
 
-  <div class="flex flex-wrap gap-2 mt-12">
-    {{ range .Params.skills }}
-    <span
-      class="px-3 py-1.5 border border-[var(--border)] rounded-md text-[13px] font-medium flex items-center gap-2 hover:border-stei-blue/40 hover:bg-stei-blue/[0.02] transition-all cursor-default"
-    >
-      <i
-        data-lucide="{{ .icon }}"
-        class="w-3.5 h-3.5"
-        style="color: {{ .color }};"
-      ></i>
-      <span class="text-[var(--text)]">{{ .name }}</span>
-    </span>
-    {{ end }}
-  </div>
   <h4
     class="text-base font-bold mb-4 flex items-center gap-2 text-[var(--text)] mt-10 tracking-wider"
   >
     Stay in the loop
   </h4>
+
   <div class="mt-1">{{ partial "newsletter.html" . }}</div>
 </section>
 {{ end }}

@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode }}" class="dark">
-  <head>
-    {{ partial "head.html" . }}
-  </head>
+  {{ partial "head.html" . }}
   <body class="antialiased">
     {{ partial "nav.html" . }}
 
@@ -14,69 +12,6 @@
       {{ block "main" . }}{{ end }}
     </main>
 
-    {{ partial "footer.html" . }} {{ partial "scripts.html" . }} {{ $js :=
-    resources.Get "js/main.js" | minify | fingerprint }}
-    <script
-      src="{{ $js.RelPermalink }}"
-      integrity="{{ $js.Data.Integrity }}"
-    ></script>
-
-    <script>
-      // Funkcija za Title
-      function updatePageTitle() {
-        const h1Element = document.querySelector("#swup h1");
-        if (h1Element) {
-          const postTitle = h1Element.innerText.trim();
-          // Provjera da nismo na Home (ako H1 sadrži tvoje ime, tretiraj kao Home)
-          if (
-            postTitle === "Adnan Halvadžija" ||
-            window.location.pathname === "/"
-          ) {
-            document.title = "Adnan Halvadžija";
-          } else {
-            document.title = postTitle + " | Adnan Halvadžija";
-          }
-        }
-      }
-
-      // Funkcija za Scroll Progress
-      function initScrollProgress() {
-        const progressBar = document.getElementById("scroll-progress-bar");
-        if (!progressBar) return;
-
-        if (window._scrollHandler)
-          window.removeEventListener("scroll", window._scrollHandler);
-
-        window._scrollHandler = () => {
-          const winScroll =
-            document.documentElement.scrollTop || document.body.scrollTop;
-          const height =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
-          const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-          progressBar.style.width = scrolled + "%";
-        };
-
-        window.addEventListener("scroll", window._scrollHandler);
-        window._scrollHandler();
-      }
-
-      // SWUP EVENT
-      document.addEventListener("swup:contentReplaced", () => {
-        updatePageTitle();
-        initScrollProgress();
-
-        // Ponovo pokreni magnetni efekt i ikone iz main.js
-        if (typeof initMagneticEffect === "function") initMagneticEffect();
-        if (typeof lucide !== "undefined") lucide.createIcons();
-
-        window.scrollTo(0, 0);
-      });
-
-      // Prvo učitavanje
-      document.addEventListener("DOMContentLoaded", () => {
-        initScrollProgress();
-      });
-    </script>
+    {{ partial "footer.html" . }} {{ partial "scripts.html" . }}
   </body>
 </html>

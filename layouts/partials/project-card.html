@@ -1,21 +1,32 @@
-<div class="project-card group p-6 border border-[var(--border)] bg-transparent hover:border-stei-blue/30 hover:bg-stei-blue/[0.02] transition-all duration-300 rounded-xl">
+<div
+  class="project-card group p-6 border border-[var(--border)] bg-transparent hover:border-stei-blue/30 hover:bg-stei-blue/[0.02] transition-all duration-300 rounded-xl"
+>
   <a href="{{ .Params.github }}" target="_blank" class="block">
     <div class="flex justify-between items-start mb-4">
       <div class="flex items-center gap-4">
-        <i data-lucide="{{ .Params.icon | default "terminal" }}" 
-           class="text-[var(--muted)] group-hover:text-stei-blue w-7 h-7 transition-colors"></i>
+        {{ $icon := .Params.icon | default "terminal" }} {{ partial "icon.html"
+        (dict "name" $icon "class" `text-[var(--muted)]
+        group-hover:text-stei-blue w-7 h-7 transition-colors`) }}
+
         <div>
-          <h4 class="font-bold text-xl group-hover:text-stei-blue transition-colors">
+          <h4
+            class="font-bold text-xl group-hover:text-stei-blue transition-colors"
+          >
             {{ .Title }}
           </h4>
           {{ if .Params.status }}
-          <p class="text-[10px] text-stei-blue/70 font-mono uppercase tracking-widest mt-0.5">
+          <p
+            class="text-[10px] text-stei-blue/70 font-mono uppercase tracking-widest mt-0.5"
+          >
             {{ .Params.status }}
           </p>
           {{ end }}
         </div>
       </div>
-      <i data-lucide="external-link" class="w-4 h-4 text-[var(--muted)] opacity-0 group-hover:opacity-100 transition-all transform translate-y-1 group-hover:translate-y-0"></i>
+
+      {{ partial "icon.html" (dict "name" "external-link" "class" `w-4 h-4
+      text-[var(--muted)] opacity-0 group-hover:opacity-100 transition-all
+      transform translate-y-1 group-hover:translate-y-0`) }}
     </div>
 
     <p class="text-sm text-[var(--muted)] leading-relaxed mb-6">
@@ -24,7 +35,9 @@
 
     <div class="flex gap-2 flex-wrap">
       {{ range .Params.tech }}
-      <span class="text-[10px] px-2 py-0.5 bg-[var(--border)] text-[var(--muted)] group-hover:border-stei-blue/20 group-hover:text-stei-blue transition-colors border border-transparent rounded font-medium">
+      <span
+        class="text-[10px] px-2 py-0.5 bg-[var(--border)] text-[var(--muted)] group-hover:border-stei-blue/20 group-hover:text-stei-blue transition-colors border border-transparent rounded font-medium"
+      >
         {{ . }}
       </span>
       {{ end }}

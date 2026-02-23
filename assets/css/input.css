@@ -34,60 +34,76 @@ body {
   color: var(--text);
   font-family: "JetBrains Mono", monospace;
   line-height: 1.6;
-  transition:
-    background-color 0.15s ease-in-out,
-    color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 svg {
   stroke-width: 1.8px;
 }
 
+/* Navigation */
 .nav-link {
   @apply cursor-pointer hover:text-stei-blue hover:underline decoration-2 underline-offset-8 flex items-center text-[var(--muted)];
-  transition:
-    color 0.2s ease,
-    text-decoration 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-active {
   @apply text-stei-blue underline decoration-2 underline-offset-8 font-bold;
 }
 
+/* Components */
 .project-card {
   @apply cursor-pointer p-5 rounded-lg border border-[var(--border)] transition-all duration-300;
 }
 
+/* SOCIAL ICONS - Professional Setup 
+   Fixed container size for a solid magnetic feel.
+*/
 .social-icon-lucide {
-  @apply transition-all duration-300;
+  @apply inline-flex items-center justify-center rounded-md text-[var(--muted)];
+  width: 36px;
+  height: 36px;
+  position: relative;
+  z-index: 1;
+  backface-visibility: hidden;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .social-icon-lucide:hover {
-  @apply border-stei-blue text-stei-blue;
-  box-shadow: 0 10px 20px -10px rgba(49, 130, 206, 0.5);
-}
-
-nav a,
-h2,
-.social-icon-lucide svg {
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  @apply text-stei-blue bg-stei-blue/10;
 }
 
 .social-icon-lucide svg {
+  width: 18px !important; 
+  height: 18px !important;
   pointer-events: none;
-}
-
-html.dark .sun,
-html:not(.dark) .moon {
   display: block;
 }
-html.dark .moon,
-html:not(.dark) .sun {
-  display: none;
+
+/* Global SVG Handling */
+.social-svg-container {
+  @apply inline-flex items-center justify-center;
 }
 
+.social-svg-container svg {
+  @apply block shrink-0;
+}
+
+.social-svg-container svg:not([stroke]) {
+  fill: currentColor !important;
+  stroke: none;
+}
+
+.social-svg-container svg[stroke] {
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+/* Theme Toggle Visibility */
+html.dark .sun, html:not(.dark) .moon { display: block; }
+html.dark .moon, html:not(.dark) .sun { display: none; }
+
+/* View Transitions Fixes */
 .social-icon-lucide,
 #theme-toggle,
 img {
@@ -98,11 +114,14 @@ img {
 ::view-transition-new(root) {
   animation-duration: 0.4s;
 }
+
+/* Typography & Code */
 pre code {
   @apply antialiased;
   font-variant-ligatures: common-ligatures;
 }
 
+/* Scroll Progress */
 #scroll-progress-container {
   z-index: 9999 !important;
   pointer-events: none;
@@ -110,16 +129,23 @@ pre code {
 
 #scroll-progress-bar {
   background-color: #3182ce !important;
+  transition: width 0.1s ease-out;
 }
+
+/* Swup Transitions */
 .swup-transition-main {
   opacity: 1;
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   transform: translateY(0);
 }
 
 html.is-animating .swup-transition-main {
   opacity: 0;
   transform: translateY(10px);
+}
+
+/* Layout helpers */
+nav a, h2 {
+  backface-visibility: visible; 
+  transform: none; 
 }

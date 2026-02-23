@@ -1,137 +1,17 @@
+{{/* English: Build the main.js bundle and inject it here */}} {{- $js :=
+resources.Get "js/main.js" | js.Build (dict "minify" true) | fingerprint -}}
+<script
+  src="{{ $js.RelPermalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  defer
+></script>
+
 <script>
-  // Pomoćna funkcija za logiku promjene sadržaja
-  // English: Helper function to handle DOM updates for SPA
-  function updateDOM(pageId) {
-    // 1. Sakrij sve stranice
-    document
-      .querySelectorAll(".page-content")
-      .forEach((p) => p.classList.add("hidden"));
-
-    // 2. Prikaži odabranu
-    const target = document.getElementById("page-" + pageId);
-    if (target) target.classList.remove("hidden");
-
-    // 3. Navigacijski stilovi
-    document
-      .querySelectorAll(".nav-link")
-      .forEach((l) => l.classList.remove("nav-active"));
-    const activeNav = document.getElementById("nav-" + pageId);
-    if (activeNav) activeNav.classList.add("nav-active");
-
-    // English: Update the window title based on current page
-    if (pageId === "home") {
-      document.title = "Adnan Halvadžija";
-    } else {
-      // Prvo pokušaj naći pravi H1 naslov na toj "stranici" (div-u)
-      const targetPage = document.getElementById("page-" + pageId);
-      const h1Inside = targetPage ? targetPage.querySelector("h1") : null;
-
-      if (h1Inside) {
-        // Ako nađeš H1 (npr. naslov posta), koristi ga
-        document.title = `${h1Inside.innerText.trim()} | Adnan Halvadžija`;
-      } else {
-        // Ako nema H1, koristi ID (ono što si već imao)
-        const cap = pageId.charAt(0).toUpperCase() + pageId.slice(1);
-        document.title = `${cap} | Adnan Halvadžija`;
-      }
-    }
-
+  // English: Since we use Swup/SPA, we need to re-trigger some logic after page changes
+  document.addEventListener("swup:contentReplaced", () => {
+    if (typeof initIcons === "function") initIcons();
+    if (typeof initMagneticEffect === "function") initMagneticEffect();
+    if (typeof initScrollProgress === "function") initScrollProgress();
     window.scrollTo(0, 0);
-    lucide.createIcons(); // Osvježi ikone nakon promjene stranice
-  }
-
-  // Glavna funkcija sa tranzicijom
-  // English: Main function to handle page navigation with transitions
-  function showPage(pageId, pushState = true) {
-    if (pushState) {
-      window.history.pushState({ pageId }, "", `#${pageId}`);
-    }
-
-    if (!document.startViewTransition) {
-      updateDOM(pageId);
-      return;
-    }
-
-    document.startViewTransition(() => updateDOM(pageId));
-  }
-
-  // Theme Logic
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  const htmlElement = document.documentElement;
-
-  const setTheme = (isDark) => {
-    htmlElement.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  };
-
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  setTheme(savedTheme === "dark" || (!savedTheme && prefersDark));
-
-  themeToggleBtn.addEventListener("click", () => {
-    const isCurrentlyDark = htmlElement.classList.contains("dark");
-    if (!document.startViewTransition) {
-      setTheme(!isCurrentlyDark);
-      return;
-    }
-    document.startViewTransition(() => setTheme(!isCurrentlyDark));
   });
-
-  // Magnetic Effect - Ultra Smooth version
-  document.querySelectorAll(".social-icon-lucide").forEach((icon) => {
-    let frameId = null;
-
-    icon.addEventListener("mousemove", (e) => {
-      const rect = icon.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      // Otkaži prethodni frame ako postoji
-      if (frameId) cancelAnimationFrame(frameId);
-
-      frameId = requestAnimationFrame(() => {
-        icon.style.transition = "none";
-        const svg = icon.querySelector("svg");
-        if (svg) svg.style.transition = "none";
-
-        icon.style.transform = `translate3d(${x * 0.3}px, ${y * 0.3}px, 0) rotateX(${-y * 0.1}deg) rotateY(${x * 0.1}deg)`;
-        if (svg) {
-          svg.style.transform = `translate3d(${x * 0.1}px, ${y * 0.1}px, 0) scale(1.1)`;
-        }
-      });
-    });
-
-    icon.addEventListener("mouseleave", () => {
-      if (frameId) cancelAnimationFrame(frameId);
-
-      const spring = "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
-      icon.style.transition = spring;
-      icon.style.transform = "translate3d(0, 0, 0) rotateX(0) rotateY(0)";
-
-      const svg = icon.querySelector("svg");
-      if (svg) {
-        svg.style.transition = spring;
-        svg.style.transform = "translate3d(0, 0, 0) scale(1)";
-      }
-    });
-  });
-
-  lucide.createIcons();
-
-  // Browser Navigation (Back/Forward)
-  // English: Handle back/forward browser buttons without adding extra history states
-  window.addEventListener("popstate", () => {
-    const hash = window.location.hash.replace("#", "") || "home";
-    showPage(hash, false); // false - ne guraj ponovo u historiju
-  });
-
-  // Initial Load
-  window.addEventListener("DOMContentLoaded", () => {
-    const hash = window.location.hash.replace("#", "") || "home";
-    showPage(hash, false);
-  });
-
-  window.scrollTo(0, 0);
-  lucide.createIcons();
-  if (typeof initScrollProgress === "function") initScrollProgress();
 </script>
