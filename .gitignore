@@ -1,44 +1,53 @@
-# Hugo
+# ==========================================
+# ADO PORTFOLIO - GITIGNORE
+# ==========================================
+
+# --- Hugo Specifics ---
 public/
 resources/
 .hugo_build.lock
+.hugo_cache/
 
-# Node / Frontend
+# --- Node / Frontend (Tailwind, PostCSS) ---
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 .parcel-cache/
 dist/
 build/
-# Tailwind/CSS output
+.cache/
+npm-debug.log*
+yarn-debug.log*
+
+# --- Build Outputs (Generated Files) ---
 assets/css/dist.css
 static/css/style.css
-
-# Pagefind
+# Pagefind search index
 static/pagefind/
 
-# Python & Newsletter
-newsletter.py
+# --- Python & Newsletter Environment ---
+# Scripts folder for newsletter generation
+# But we want to keep the source code, so we ignore only the generated files and virtual environments
 __pycache__/
-*-venv/
-*venv/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env.bak/
 
-# Environment & Secrets
+# --- Secrets & Environment Variables (CRITICAL) ---
 .env
 .env.*
 *.env
-supabase/config.toml # ALERT: This file may contain sensitive information. Do not commit it to version control.
+# Local Supabase development files
+supabase/.temp/
+supabase/.storage/
 
-# Databases & Logs
+# --- Databases & Logs ---
 *.db
 *.sqlite3
 *.log
 
-# IDE & OS
+# --- IDE & OS ---
 .DS_Store
 .idea/
 .vscode/
