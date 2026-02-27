@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="max-w-3xl mx-auto">
+  <div class="mb-8">
+    <h3 class="text-2xl font-extrabold tracking-tight">All posts</h3>
+  </div>
+
+  <div class="mb-12">
+    <h5
+      class="text-sm font-mono font-extrabold tracking-widest text-[var(--muted)] mb-4"
+    >
+      Filter by Topic
+    </h5>
+
+    <div class="flex flex-wrap gap-2 mb-10">
+      {{ range .Site.Taxonomies.tags }}
+      <a
+        href="{{ .Page.RelPermalink }}"
+        class="px-3 py-1.5 text-xs font-medium bg-[var(--border)]/30 border border-[var(--border)] rounded-full hover:border-stei-blue hover:text-stei-blue transition-all"
+      >
+        #{{ .Page.Title }}
+        <span class="ml-1 opacity-50 text-[10px]">{{ .Count }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="flex flex-col">
+    {{ range .Pages }} {{ partial "post-card.html" . }} {{ end }}
+  </div>
+</section>
+{{ end }}

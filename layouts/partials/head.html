@@ -1,0 +1,58 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="google-site-verification" content="{{ .Site.Params.googleSiteVerification }}">
+<meta property="og:image" content="{{ "images/og-card.jpeg" | absURL }}" />
+<meta name="twitter:image" content="{{ "images/og-card.jpeg" | absURL }}" />
+<link rel="canonical" href="{{ .Permalink }}">
+<title>
+  {{ if .IsHome }}
+    {{ .Site.Title }}
+  {{ else }}
+    {{ .Title }} | {{ .Site.Title }}
+  {{ end }}
+</title>
+
+  <script>
+    if (
+      localStorage.getItem("theme") === "dark" ||
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+
+  <meta
+    name="description"
+    content="Portfolio Adnana Halvadžije - Software Engineer."
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="{{ if .IsHome }}Adnan Halvadžija{{ else }}{{ .Title }} | Adnan Halvadžija{{ end }}"
+  />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  {{ $style := resources.Get "css/style.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "/index.xml" | relURL }}">
+</head>

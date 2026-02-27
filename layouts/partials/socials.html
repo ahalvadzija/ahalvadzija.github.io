@@ -1,0 +1,23 @@
+{{ $iconClass := "w-5 h-5 transition-all duration-300 ease-out hover:-translate-y-1" }}
+
+<div class="flex items-center gap-3">
+    <a href="https://github.com/ahalvadzija" target="_blank" class="social-icon-lucide" title="GitHub">
+        {{ partial "icon.html" (dict "name" "github" "class" $iconClass) }}
+    </a>
+
+    <a href="https://www.linkedin.com/in/halvadzija-adnan/" target="_blank" class="social-icon-lucide" title="LinkedIn">
+        {{ partial "icon.html" (dict "name" "linkedin" "class" $iconClass) }}
+    </a>
+
+    <a href="https://dev.to/ahalvadzija" target="_blank" class="social-icon-lucide" title="Dev.To">
+        {{ partial "icon.html" (dict "name" "devto" "class" $iconClass) }}
+    </a>
+
+    <a href="https://mastodon.social/@ahalvadzija" target="_blank" class="social-icon-lucide" title="Mastodon">
+        {{ partial "icon.html" (dict "name" "mastodon" "class" $iconClass) }}
+    </a>
+
+    <a href="mailto:halvadzija.adnan@gmail.com" class="social-icon-lucide" title="Email">
+        {{ partial "icon.html" (dict "name" "mail" "class" $iconClass) }}
+    </a>
+</div>

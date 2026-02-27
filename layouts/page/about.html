@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="max-w-full mx-auto">
+  <h3 class="text-2xl font-extrabold tracking-tight mb-8">About</h3>
+
+  <div class="flex flex-col md:flex-row gap-8 items-start mb-12">
+    <div class="w-48 h-48 md:w-56 md:h-56 shrink-0 mx-auto md:mx-0">
+      <img
+        src="{{ .Params.profileImage }}"
+        alt="Adnan Halvadžija"
+        class="w-full h-auto rounded-lg border border-[var(--border)] shadow-sm grayscale hover:grayscale-0 transition-all duration-500"
+      />
+    </div>
+
+    <div class="space-y-6 text-[var(--text)] flex-1 leading-relaxed">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <div class="h-[1px] bg-[var(--border)] w-full mb-10"></div>
+
+  <h4
+    class="text-sm font-bold mb-6 text-stei-blue uppercase tracking-widest flex items-center gap-2"
+  >
+    Tech Stack &
+    Tools
+  </h4>
+
+  <div class="flex flex-wrap gap-2">
+    {{ range .Params.skills }}
+    <span
+      class="px-3 py-1.5 border border-[var(--border)] rounded-md text-[13px] font-medium flex items-center gap-2 hover:border-stei-blue/40 hover:bg-stei-blue/[0.02] transition-all cursor-default"
+    >
+      <span
+        style="color: {{ .color }};"
+        class="inline-flex items-center shrink-0"
+      >
+        {{ partial
+        "icon.html" (dict "name" .icon "class" "w-3.5 h-3.5") }}
+      </span>
+      <span class="text-[var(--text)]">{{ .name }}</span>
+    </span>
+    {{ end }}
+  </div>
+
+  <p
+    class="text-[var(--muted)] leading-relaxed italic border-l-2 border-stei-blue pl-6 mt-12 py-2 bg-stei-blue/[0.03] text-sm"
+  >
+    "I leverage AI-driven workflows to accelerate delivery without compromising
+    on clean, modular code."
+  </p>
+
+  <h4
+    class="mt-10 mb-3 text-base font-bold flex items-center gap-2 text-[var(--text)] tracking-wider"
+  >
+    Stay in the loop
+  </h4>
+
+  <div class="">{{ partial "newsletter.html" . }}</div>
+</section>
+{{ end }}

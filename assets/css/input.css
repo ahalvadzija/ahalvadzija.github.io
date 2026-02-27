@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-stei-blue: #3182ce;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "JetBrains Mono", monospace;
+
+  --color-main-bg: var(--bg);
+  --color-main-text: var(--text);
+  --color-main-border: var(--border);
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #4b5563;
+  --border: #e2e8f0;
+}
+
+.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --muted: #a1a1aa;
+  --border: #1e293b;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.6;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+svg {
+  stroke-width: 1.8px;
+}
+
+.nav-link {
+  @apply cursor-pointer hover:text-stei-blue hover:underline decoration-2 underline-offset-8 flex items-center text-[var(--muted)];
+  transition: all 0.2s ease;
+}
+
+.nav-active {
+  @apply text-stei-blue underline decoration-2 underline-offset-8 font-bold;
+}
+
+.project-card {
+  @apply cursor-pointer p-5 rounded-lg border border-[var(--border)] transition-all duration-300;
+}
+
+html.dark .sun, html:not(.dark) .moon { display: block; }
+html.dark .moon, html:not(.dark) .sun { display: none; }
+
+
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: 0.4s;
+}
+
+pre code {
+  @apply antialiased;
+  font-variant-ligatures: common-ligatures;
+}
+
+#scroll-progress-container {
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+#scroll-progress-bar {
+  background-color: #3182ce !important;
+  transition: width 0.1s ease-out;
+}
+
+.swup-transition-main {
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(0);
+}
+
+html.is-animating .swup-transition-main {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.dark article .flex.flex-wrap.gap-3 a {
+    color: #f1f5f9 !important;
+}
+
+.prose :where(p, figure, div) > img:not([src*="badge"]):not([src*="shields.io"]) {
+    border-radius: 1.25rem !important;
+    @apply shadow-lg my-8 block mx-auto;
+}
+
+.prose .flex.flex-wrap img, 
+.prose img[src*="badge"], 
+.prose img[src*="shields.io"] {
+    border-radius: 2px !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    box-shadow: none !important;
+}
+
+.dark .prose strong, 
+.dark .prose b {
+    color: #ffffff !important;
+}
+
+.social-svg-container {
+  @apply inline-flex items-center justify-center;
+  color: var(--muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-svg-container svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  display: block;
+}
+
+.social-svg-container svg[fill="none"] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8px;
+}
+
+.dark .social-svg-container,
+.dark .social-share-link,
+.dark .social-icon-lucide {
+  color: var(--text) !important;
+}
+
+.social-icon-lucide:hover .social-svg-container,
+.social-share-link:hover .social-svg-container {
+  color: var(--color-stei-blue) !important;
+}
+
+.dark span[style*="color"]:not(.highlight span):not(.chroma span) {
+    color: var(--text) !important;
+}
+
+.highlight, 
+.chroma, 
+.highlight pre {
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important; 
+    padding: 0 !important;
+}
+
+.code-wrapper {
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    @apply my-6 overflow-hidden;
+}
+
+.highlight pre {
+    padding: 1.25rem !important; 
+    overflow-x: auto;
+}
+
+.code-wrapper span {
+    letter-spacing: -0.01em;
+}
