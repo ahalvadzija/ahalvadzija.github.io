@@ -10,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# Ensure only one deployment runs at a time to prevent conflicts
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -22,7 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Fetch submodules if any Hugo themes are added as submodules in the future
           submodules: recursive
 
       - name: Setup Node
@@ -31,8 +29,26 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install Dependencies
+      - name: Install Node Dependencies
         run: npm install
+
+      # --- NOVI KORAK: PYTHON ZA NEWSLETTER ---
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python Dependencies
+        run: |
+          pip install supabase resend python-dotenv
+
+      - name: Run Newsletter Report
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python newsletter.py
+      # ---------------------------------------
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -42,12 +58,9 @@ jobs:
 
       - name: Build Website
         env:
-          # Injecting secrets as environment variables for Hugo
-          # Hugo will map these to .Site.Params.supabaseUrl and .Site.Params.supabaseKey
           HUGO_PARAMS_SUPABASEURL: ${{ secrets.SUPABASE_URL }}
           HUGO_PARAMS_SUPABASEKEY: ${{ secrets.SUPABASE_ANON_KEY }}
-        # Using the script from package.json which handles:
-        # css:build + hugo + pagefind indexing
+          HUGO_PARAMS_GOOGLESITEVERIFICATION: "sjCb9cTDDlB347Mfx93MfXjWt0Na-5pxbPdoYrGIeAk"
         run: npm run build
 
       - name: Upload Artifact
