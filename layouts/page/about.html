@@ -21,7 +21,7 @@
   <h4
     class="text-sm font-bold mb-6 text-stei-blue uppercase tracking-widest flex items-center gap-2"
   >
-    {{ partial "icon.html" (dict "name" "cpu" "class" "w-4 h-4") }} Tech Stack &
+    Tech Stack &
     Tools
   </h4>
 
@@ -35,7 +35,7 @@
         class="inline-flex items-center shrink-0"
       >
         {{ partial
-        "icon.html" (dict "name" .icon "class" "w-3.5 h-3.5 stroke-[1.5]") }}
+        "icon.html" (dict "name" .icon "class" "w-3.5 h-3.5") }}
       </span>
       <span class="text-[var(--text)]">{{ .name }}</span>
     </span>
@@ -50,11 +50,11 @@
   </p>
 
   <h4
-    class="text-base font-bold mb-4 flex items-center gap-2 text-[var(--text)] mt-10 tracking-wider"
+    class="mt-10 mb-3 text-base font-bold flex items-center gap-2 text-[var(--text)] tracking-wider"
   >
     Stay in the loop
   </h4>
 
-  <div class="mt-1">{{ partial "newsletter.html" . }}</div>
+  <div class="">{{ partial "newsletter.html" . }}</div>
 </section>
 {{ end }}

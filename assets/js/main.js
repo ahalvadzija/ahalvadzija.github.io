@@ -3,7 +3,6 @@ import * as UI from "./modules/ui.js";
 import * as Theme from "./modules/theme.js";
 
 function initAll() {
-  UI.initMagneticEffect();
   UI.initScrollProgress();
   UI.initKeyboardShortcuts();
   UI.initSearch(); // Work with Swup

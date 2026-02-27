@@ -58,23 +58,23 @@
   {{ $url := .Permalink }}
   {{ $title := .Title }}
 
-  <a href="https://twitter.com/intent/tweet?url={{ $url }}&text={{ $title }}" target="_blank" rel="noopener" class="text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on X">
+  <a href="https://twitter.com/intent/tweet?url={{ $url }}&text={{ $title }}" target="_blank" rel="noopener" class="social-share-link text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on X">
     {{ partial "icon.html" (dict "name" "x" "class" "w-5 h-5") }}
   </a>
 
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}" target="_blank" rel="noopener" class="text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on LinkedIn">
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}" target="_blank" rel="noopener" class="social-share-link text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on LinkedIn">
     {{ partial "icon.html" (dict "name" "linkedin" "class" "w-5 h-5") }}
   </a>
 
-  <a href="https://reddit.com/submit?url={{ $url }}&title={{ $title }}" target="_blank" rel="noopener" class="text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on Reddit">
+  <a href="https://reddit.com/submit?url={{ $url }}&title={{ $title }}" target="_blank" rel="noopener" class="social-share-link text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on Reddit">
     {{ partial "icon.html" (dict "name" "reddit" "class" "w-5 h-5") }}
   </a>
 
-  <a href="https://t.me/share/url?url={{ $url }}&text={{ $title }}" target="_blank" rel="noopener" class="text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on Telegram">
+  <a href="https://t.me/share/url?url={{ $url }}&text={{ $title }}" target="_blank" rel="noopener" class="social-share-link text-[var(--muted)] hover:text-stei-blue transition-all" title="Share on Telegram">
     {{ partial "icon.html" (dict "name" "send" "class" "w-5 h-5") }}
   </a>
 
-  <a href="mailto:?subject={{ $title }}&body={{ $url }}" class="text-[var(--muted)] hover:text-stei-blue transition-all" title="Send via Email">
+  <a href="mailto:?subject={{ $title }}&body={{ $url }}" class="social-share-link text-[var(--muted)] hover:text-stei-blue transition-all"  title="Send via Email">
     {{ partial "icon.html" (dict "name" "mail" "class" "w-5 h-5") }}
   </a>
 </div>

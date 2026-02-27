@@ -22,6 +22,7 @@ static/pagefind/
 newsletter.py
 __pycache__/
 *-venv/
+*venv/
 *.pyc
 *.pyo
 *.pyd

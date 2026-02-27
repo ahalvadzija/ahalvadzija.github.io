@@ -41,7 +41,6 @@ svg {
   stroke-width: 1.8px;
 }
 
-/* Navigation */
 .nav-link {
   @apply cursor-pointer hover:text-stei-blue hover:underline decoration-2 underline-offset-8 flex items-center text-[var(--muted)];
   transition: all 0.2s ease;
@@ -51,77 +50,23 @@ svg {
   @apply text-stei-blue underline decoration-2 underline-offset-8 font-bold;
 }
 
-/* Components */
 .project-card {
   @apply cursor-pointer p-5 rounded-lg border border-[var(--border)] transition-all duration-300;
 }
 
-/* SOCIAL ICONS - Professional Setup 
-   Fixed container size for a solid magnetic feel.
-*/
-.social-icon-lucide {
-  @apply inline-flex items-center justify-center rounded-md text-[var(--muted)];
-  width: 36px;
-  height: 36px;
-  position: relative;
-  z-index: 1;
-  backface-visibility: hidden;
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.social-icon-lucide:hover {
-  @apply text-stei-blue bg-stei-blue/10;
-}
-
-.social-icon-lucide svg {
-  width: 18px !important; 
-  height: 18px !important;
-  pointer-events: none;
-  display: block;
-}
-
-/* Global SVG Handling */
-.social-svg-container {
-  @apply inline-flex items-center justify-center;
-}
-
-.social-svg-container svg {
-  @apply block shrink-0;
-}
-
-.social-svg-container svg:not([stroke]) {
-  fill: currentColor !important;
-  stroke: none;
-}
-
-.social-svg-container svg[stroke] {
-  stroke: currentColor !important;
-  fill: none !important;
-}
-
-/* Theme Toggle Visibility */
 html.dark .sun, html:not(.dark) .moon { display: block; }
 html.dark .moon, html:not(.dark) .sun { display: none; }
 
-/* View Transitions Fixes */
-.social-icon-lucide,
-#theme-toggle,
-img {
-  view-transition-name: none !important;
-}
 
-::view-transition-old(root),
-::view-transition-new(root) {
+::view-transition-old(root), ::view-transition-new(root) {
   animation-duration: 0.4s;
 }
 
-/* Typography & Code */
 pre code {
   @apply antialiased;
   font-variant-ligatures: common-ligatures;
 }
 
-/* Scroll Progress */
 #scroll-progress-container {
   z-index: 9999 !important;
   pointer-events: none;
@@ -132,7 +77,6 @@ pre code {
   transition: width 0.1s ease-out;
 }
 
-/* Swup Transitions */
 .swup-transition-main {
   opacity: 1;
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -144,8 +88,84 @@ html.is-animating .swup-transition-main {
   transform: translateY(10px);
 }
 
-/* Layout helpers */
-nav a, h2 {
-  backface-visibility: visible; 
-  transform: none; 
+.dark article .flex.flex-wrap.gap-3 a {
+    color: #f1f5f9 !important;
+}
+
+.prose :where(p, figure, div) > img:not([src*="badge"]):not([src*="shields.io"]) {
+    border-radius: 1.25rem !important;
+    @apply shadow-lg my-8 block mx-auto;
+}
+
+.prose .flex.flex-wrap img, 
+.prose img[src*="badge"], 
+.prose img[src*="shields.io"] {
+    border-radius: 2px !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    box-shadow: none !important;
+}
+
+.dark .prose strong, 
+.dark .prose b {
+    color: #ffffff !important;
+}
+
+.social-svg-container {
+  @apply inline-flex items-center justify-center;
+  color: var(--muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-svg-container svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  display: block;
+}
+
+.social-svg-container svg[fill="none"] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8px;
+}
+
+.dark .social-svg-container,
+.dark .social-share-link,
+.dark .social-icon-lucide {
+  color: var(--text) !important;
+}
+
+.social-icon-lucide:hover .social-svg-container,
+.social-share-link:hover .social-svg-container {
+  color: var(--color-stei-blue) !important;
+}
+
+.dark span[style*="color"]:not(.highlight span):not(.chroma span) {
+    color: var(--text) !important;
+}
+
+.highlight, 
+.chroma, 
+.highlight pre {
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important; 
+    padding: 0 !important;
+}
+
+.code-wrapper {
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    @apply my-6 overflow-hidden;
+}
+
+.highlight pre {
+    padding: 1.25rem !important; 
+    overflow-x: auto;
+}
+
+.code-wrapper span {
+    letter-spacing: -0.01em;
 }

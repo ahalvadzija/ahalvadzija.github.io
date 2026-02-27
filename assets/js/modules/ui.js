@@ -4,54 +4,7 @@
  * Magnetic effect for social icons
  * Creates a parallax movement where the icon follows the cursor subtly.
  */
-export function initMagneticEffect() {
-  const icons = document.querySelectorAll(".social-icon-lucide");
-  
-  icons.forEach((icon) => {
-    let frameId = null;
-    const svg = icon.querySelector("svg");
 
-    icon.addEventListener("mousemove", (e) => {
-      const rect = icon.getBoundingClientRect();
-      
-      // Calculate cursor distance from the center of the icon
-      // Multiplied by 0.3 to keep the movement subtle and controlled
-      const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-      const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-
-      if (frameId) cancelAnimationFrame(frameId);
-
-      frameId = requestAnimationFrame(() => {
-        // Smooth container (background) movement
-        icon.style.transition = "transform 0.1s ease-out, background-color 0.2s ease, color 0.2s ease";
-        icon.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-
-        if (svg) {
-          // Icon moves slower than the container to create a parallax effect
-          // This adds depth without sacrificing SVG sharpness or causing blur
-          svg.style.transition = "transform 0.2s ease-out";
-          svg.style.transform = `translate3d(${x * 0.4}px, ${y * 0.4}px, 0)`;
-        }
-      });
-    });
-
-    icon.addEventListener("mouseleave", () => {
-      if (frameId) cancelAnimationFrame(frameId);
-
-      // Professional "Spring" return (back-out animation)
-      // Prevents jitter and returns elements to origin with a slight, natural bounce
-      const spring = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
-      
-      icon.style.transition = `${spring}, background-color 0.2s ease, color 0.2s ease`;
-      icon.style.transform = "translate3d(0, 0, 0)";
-
-      if (svg) {
-        svg.style.transition = spring;
-        svg.style.transform = "translate3d(0, 0, 0)";
-      }
-    });
-  });
-}
 
 /**
  * Updates the scroll progress bar at the top of the page

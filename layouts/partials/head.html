@@ -6,10 +6,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="shortcut icon" href="/favicon.ico">
-
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
-
+<meta name="google-site-verification" content="{{ . }}">
 <meta property="og:image" content="{{ "images/og-card.jpeg" | absURL }}" />
 <meta name="twitter:image" content="{{ "images/og-card.jpeg" | absURL }}" />
 <link rel="canonical" href="{{ .Permalink }}">
@@ -52,6 +51,8 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="/css/style.css" />
+  {{ $style := resources.Get "css/style.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "/index.xml" | relURL }}">
 </head>

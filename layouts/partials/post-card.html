@@ -1,6 +1,5 @@
-<article class="space-y-3 mb-10 group">
+<article class="space-y-3 mb-10 group cursor-pointer">
   <div class="flex items-center gap-3 text-[13px] text-[var(--muted)]">
-    
     <div class="flex items-center gap-1.5">
       <span class="inline-flex shrink-0" style="width: 16px; height: 16px;">
         {{ partial "icon.html" (dict "name" "calendar" "class" "w-full h-full stroke-[2.5]") }}
@@ -19,7 +18,7 @@
   </div>
 
   <a href="{{ .RelPermalink }}" class="block">
-    <h4 class="text-xl font-bold transition-all text-steiBlue group-hover:underline decoration-dashed underline-offset-4">
+    <h4 class="text-xl font-bold text-[var(--text)] group-hover:text-stei-blue group-hover:underline decoration-dashed underline-offset-8">
       {{ .Title }}
     </h4>
   </a>

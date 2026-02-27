@@ -1,4 +1,4 @@
-baseURL = 'https://ahalvadzija.me/'
+baseURL = 'https://ahalvadzija.github.io/'
 languageCode = 'en'
 title = 'Adnan Halvadžija'
 theme = []
@@ -7,9 +7,13 @@ theme = []
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    lineNos = false
-    style = 'github-dark'
-    noClasses = true
+    lineNos = false           
+    noClasses = true         
+    style = 'onedark'     
+    tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [taxonomies]
   tag = "tags"
@@ -27,9 +31,8 @@ theme = []
     source = "node_modules"
     target = "assets/node_modules"
 
-# Spojeni params blok
 [params]
   description = 'Systems-focused Software Engineer'
-  # Ovdje ostavi prazno ili default vrijednosti ako želiš koristiti environment varijable
-  supabaseUrl = "https://nntnofphneyrwkiyijwb.supabase.co"
-  supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5udG5vZnBobmV5cndraXlpandiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NDQ3MTUsImV4cCI6MjA4NzQyMDcxNX0.eChwe9XGC5CCvmJuGFdjnPHNp_LpZaFipApQ2oo1ha4"
+  supabaseUrl = "" # Will be filled by GitHub Actions
+  supabaseKey = "" # Will be filled by GitHub Actions
+  googleSiteVerification = "sjCb9cTDDlB347Mfx93MfXjWt0Na-5pxbPdoYrGIeAk"

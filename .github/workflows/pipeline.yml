@@ -1,7 +1,8 @@
 name: Deploy Portfolio
+
 on:
   push:
-    branches: ["refactor-theme"] # Provjeri da li je ovo tvoja glavna grana
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -9,12 +10,20 @@ permissions:
   pages: write
   id-token: write
 
+# Ensure only one deployment runs at a time to prevent conflicts
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Fetch submodules if any Hugo themes are added as submodules in the future
+          submodules: recursive
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -25,20 +34,21 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build CSS
-        run: npm run css:build
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
           extended: true
 
-      - name: Build Hugo Site
-        run: hugo --gc --minify
-
-      - name: Pagefind Indexing
-        run: npx pagefind --site public
+      - name: Build Website
+        env:
+          # Injecting secrets as environment variables for Hugo
+          # Hugo will map these to .Site.Params.supabaseUrl and .Site.Params.supabaseKey
+          HUGO_PARAMS_SUPABASEURL: ${{ secrets.SUPABASE_URL }}
+          HUGO_PARAMS_SUPABASEKEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        # Using the script from package.json which handles:
+        # css:build + hugo + pagefind indexing
+        run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
@@ -50,6 +60,8 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
