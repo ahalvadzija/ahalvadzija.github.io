@@ -1,0 +1,11 @@
+{{- $name := .name -}}
+{{- $class := .class | default "w-6 h-6" -}}
+{{- $path := printf "layouts/partials/icons/%s.svg" $name -}}
+
+<span class="inline-flex items-center justify-center {{ $class }} social-svg-container">
+  {{- if (fileExists $path) -}}
+    {{- readFile $path | safeHTML -}}
+  {{- else -}}
+    {{- warnf "Ikona %q nije pronađena" $path -}}
+  {{- end -}}
+</span>

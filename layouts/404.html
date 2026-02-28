@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div
+  class="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center font-mono"
+>
+  <h1 class="text-9xl font-bold text-stei-blue/20 tracking-tighter">404</h1>
+
+  <div class="mt-4 space-y-2">
+    <p class="text-2xl text-[var(--text)] font-bold">(╯°□°）╯︵ ┻━┻</p>
+    <p class="text-[var(--muted)] uppercase tracking-widest text-sm">
+      Page Not Found
+    </p>
+  </div>
+
+  <div class="mt-12">
+    <a
+      href="/"
+      class="text-stei-blue transition-all duration-200 hover:underline hover:decoration-dashed hover:decoration-2 hover:underline-offset-8"
+    >
+      <span class="mr-2">↳</span>Go back home
+    </a>
+  </div>
+</div>
+{{ end }}

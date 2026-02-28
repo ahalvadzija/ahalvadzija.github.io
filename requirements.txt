@@ -1,0 +1,3 @@
+supabase
+resend
+python-dotenv
