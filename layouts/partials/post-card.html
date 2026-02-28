@@ -1,0 +1,29 @@
+<article class="space-y-3 mb-10 group"> 
+  <div class="flex items-center gap-3 text-[13px] text-[var(--muted)]">
+    <div class="flex items-center gap-1.5">
+      <span class="inline-flex shrink-0 w-4 h-4">
+        {{ partial "icon.html" (dict "name" "calendar" "class" "w-full h-full stroke-[2]") }}
+      </span>
+      <span class="italic leading-none">{{ .Date.Format "02 Jan, 2006" }}</span>
+    </div>
+
+    <span class="opacity-40">•</span>
+
+    <div class="flex items-center gap-1.5">
+      <span class="inline-flex shrink-0 w-4 h-4">
+        {{ partial "icon.html" (dict "name" "clock" "class" "w-full h-full stroke-[2]") }}
+      </span>
+      <span class="italic leading-none">{{ .ReadingTime }} min read</span>
+    </div>
+  </div>
+
+  <a href="{{ .RelPermalink }}" class="block w-fit group/title"> 
+<h4 class="font-bold text-lg text-[var(--text)] group-hover/title:text-stei-blue group-hover/title:underline decoration-dashed underline-offset-8 transition-all">
+  {{ .Title }}
+</h4>
+  </a>
+
+<p class="text-[var(--muted)] leading-relaxed text-sm">
+    {{ .Summary }}
+</p>
+</article>

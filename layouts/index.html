@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div id="page-home" class="page-content">
+  <section class="flex flex-col md:flex-row items-center gap-12 mb-20">
+    <div class="w-40 h-40 md:w-44 md:h-44 shrink-0 relative group">
+      <div
+        class="absolute inset-0 bg-steiBlue rounded-full blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+      ></div>
+      <img
+        src="/images/adnan-avatar.png"
+        class="relative w-full h-full rounded-full object-cover border-2 border-[var(--border)]"
+      />
+    </div>
+
+    <div class="space-y-4 text-center md:text-left">
+     <h2 class="text-2xl font-black tracking-tighter flex items-center gap-1">
+  Hi, I'm @ahalvadzija.
+  <a href="{{ "/index.xml" | relURL }}"   
+     target="_blank"   
+     rel="noopener noreferrer"   
+     title="RSS Feed"
+     class="flex items-center group ml-0 social-icon-lucide"> {{ partial "icon.html" (dict  
+      "name" "rss"  
+      "class" "w-6 h-6 text-stei-blue/70 transition-colors"
+    ) }}
+  </a>
+</h2>
+      <p class="text-lg text-[var(--muted)] leading-relaxed">
+        <span class="text-[var(--text)] font-semibold">Systems-focused</span>
+        Software Engineer. <br />
+        Deeply invested in the
+        <span class="text-steiBlue font-semibold">Java ecosystem</span> and
+        building scalable enterprise solutions.
+      </p>
+      <div class="flex justify-center md:justify-start gap-3">
+        {{ partial "socials.html" . }}
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}
