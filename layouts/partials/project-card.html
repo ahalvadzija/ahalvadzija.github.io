@@ -1,0 +1,49 @@
+<div class="group p-5 rounded-xl border border-[var(--border)] bg-transparent 
+            hover:border-stei-blue/30 active:bg-stei-blue/[0.02] transition-all duration-300">
+  
+  <div class="flex justify-between items-start mb-4">
+    <div class="flex items-center gap-3">
+      <div class="p-1.5 rounded-lg bg-[var(--border)]/40 
+                  sm:group-hover:bg-stei-blue/10 transition-colors duration-300">
+        {{ $icon := .Params.icon | default "terminal" }}
+        {{ partial "icon.html" (dict "name" $icon "class" "w-5 h-5 text-[var(--muted)] sm:group-hover:text-stei-blue transition-colors") }}
+      </div>
+
+      <div>
+        <a href="{{ .Params.github }}" target="_blank" rel="noopener" class="block group/title">
+          <h4 class="font-bold text-lg text-[var(--text)] 
+                     sm:group-hover/title:text-stei-blue sm:group-hover/title:underline 
+                     decoration-dashed underline-offset-8 transition-all">
+            {{ .Title }}
+          </h4>
+        </a>
+        
+        {{ if .Params.status }}
+        <span class="text-[9px] text-stei-blue/70 font-mono uppercase tracking-widest block mt-0.5">
+          {{ .Params.status }}
+        </span>
+        {{ end }}
+      </div>
+    </div>
+
+    <a href="{{ .Params.github }}" target="_blank" rel="noopener" 
+       class="text-stei-blue sm:text-[var(--muted)] sm:hover:text-stei-blue transition-colors">
+      {{ partial "icon.html" (dict "name" "external-link" "class" "w-4 h-4 opacity-40 sm:opacity-0 sm:group-hover:opacity-100 transition-all") }}
+    </a>
+  </div>
+
+<p class="text-base text-[var(--text)] opacity-75 leading-relaxed mb-6">
+    {{ .Summary }}
+</p>
+
+<div class="flex gap-2 flex-wrap">
+  {{ range .Params.tech }}
+  <span class="text-[11px] px-2.5 py-1 rounded-md border border-[var(--border)] 
+               text-[var(--muted)] bg-[var(--bg)] font-mono tracking-tight
+               sm:group-hover:border-stei-blue/30 sm:group-hover:text-stei-blue 
+               transition-all duration-300">
+    {{ . }}
+  </span>
+  {{ end }}
+</div>
+</div>
