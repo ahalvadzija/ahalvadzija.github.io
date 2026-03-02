@@ -13,7 +13,7 @@ summary: "A high-performance CLI engine built with Python. Engineered with a foc
   <a href="https://github.com/ahalvadzija/qm2/actions/workflows/pipeline.yml"><img alt="CI/CD Pipeline" src="https://github.com/ahalvadzija/qm2/actions/workflows/pipeline.yml/badge.svg"></a>
 </div>
 
-![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vnca41nd14nel655msdt.png)
+![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](vnca41nd14nel655msdt.png)
 
 ### The Mission
 
@@ -29,7 +29,7 @@ To make a CLI feel like a professional product, I relied on some of the best lib
 - **Docker**: For those who want to run the engine in a completely isolated environment.
 
 
-![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gefd7kjp6nh422f0lz8t.png)
+![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](gefd7kjp6nh422f0lz8t.png)
 
 ### Engineered for Reliability
 
@@ -40,7 +40,7 @@ As a developer, I believe that if it's not tested, it's broken.
 - **OIDC Publishing**: Secure, token-less deployment to PyPI via GitHub Actions.
 
 
-![QM2 - Modern Python CLI Quiz Maker application - passing 330 tests](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/is51nvrsx2b0et30jez9.png)
+![QM2 - Modern Python CLI Quiz Maker application - passing 330 tests](is51nvrsx2b0et30jez9.png)
 
 
 ### Key Features
@@ -51,7 +51,7 @@ As a developer, I believe that if it's not tested, it's broken.
 - **Category Management**: Organize your learning into hierarchical structures (e.g., programming/python/basics).
 
 
-![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gsevpqyl5er640xskev1.png)
+![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](gsevpqyl5er640xskev1.png)
 
 
 ### Installation & Quick Start
