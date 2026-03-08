@@ -79,7 +79,7 @@ Bash
 
 ```bash
 # Clone the repository
-git clone [https://github.com/ahalvadzija/ahalvadzija.github.io.git](https://github.com/ahalvadzija/ahalvadzija.github.io.git)
+git clone https://github.com/ahalvadzija/ahalvadzija.github.io.git
 
 # Install dependencies
 npm ci
