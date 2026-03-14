@@ -139,7 +139,7 @@ If you're a CLI enthusiast, I'd love for you to try it out and give me your feed
   <div class="flex items-center gap-3">
     <span class="text-stei-blue font-bold">~</span>
     <span class="text-[var(--muted)] w-16">GitHub:</span>
-    <a href="https://github.com/ahalvadzija/qm2" class="text-stei-blue hover:underline">ahalvadzija/qm2</a>
+    <a href="https://github.com/ahalvadzija/qm2/releases/tag/v1.0.25" class="text-stei-blue hover:underline">ahalvadzija/qm2</a>
   </div>
   <div class="flex items-center gap-3">
     <span class="text-stei-blue font-bold">~</span>
