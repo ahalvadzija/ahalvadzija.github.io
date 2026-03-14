@@ -41,19 +41,19 @@ To support AI generation without compromising the "brutalist" speed of the CLI, 
 
 Adding AI shouldn't mean breaking the 84% test coverage. I had to solve two main challenges:
 
-Mocked AI Testing: I used unittest.mock to simulate Gemini API responses. This allows the CI/CD pipeline to verify JSON parsing and fallback logic without needing a real API key or spending tokens.
+**Mocked AI Testing**: I used unittest.mock to simulate Gemini API responses. This allows the CI/CD pipeline to verify JSON parsing and fallback logic without needing a real API key or spending tokens.
 
-The Fallback Chain: Reliability is key. If the Gemini 2.0 Flash model is busy or hits a limit, QM2 automatically retries with 1.5 Flash or 1.5 Pro. The user experience remains uninterrupted.
+**The Fallback Chain**: Reliability is key. If the Gemini 2.0 Flash model is busy or hits a limit, QM2 automatically retries with 1.5 Flash or 1.5 Pro. The user experience remains uninterrupted.
 
 ### New AI Features
 
 ![QM2 - Modern Python CLI Quiz Maker application main menu featuring ASCII art and interactive terminal UI on a green gradient background](qm2-playing.png)
 
-Topic-to-Quiz: Just enter a topic like "Advanced Python Decorators" or "World War II History".
+**Topic-to-Quiz**: Just enter a topic like "Advanced Python Decorators" or "World War II History".
 
-Multi-Type Support: Unlike simple AI wrappers, QM2 forces the AI to generate all 4 supported types: Multiple Choice, True/False, Fill-in-the-blank, and even complex Matching pairs.
+**Multi-Type Support**: Unlike simple AI wrappers, QM2 forces the AI to generate all 4 supported types: Multiple Choice, True/False, Fill-in-the-blank, and even complex Matching pairs.
 
-Smart Retries: Built-in logic to handle network jitters and API quotas.
+**Smart Retries**: Built-in logic to handle network jitters and API quotas.
 
 ### Quick Start with AI
 
