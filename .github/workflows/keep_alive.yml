@@ -2,16 +2,17 @@ name: Keep Supabase Alive
 on:
   schedule:
     - cron: '0 0 * * *' # Every day at midnight UTC
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Pulse to Supabase (Write Activity)
+      - name: Send Pulse to Supabase (Upsert Activity)
         run: |
-          curl -f -X PATCH "${{ secrets.SUPABASE_URL }}/rest/v1/keep_alive?id=eq.1" \
+          curl -f -i -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/keep_alive" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Content-Type: application/json" \
-          -d "{\"last_ping\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"}"
+          -H "Prefer: resolution=merge-2024" \
+          -d "{\"id\": 1, \"last_ping\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"}"
