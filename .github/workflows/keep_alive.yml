@@ -1,16 +1,25 @@
 name: Keep Supabase Alive
+
 on:
   schedule:
     - cron: '0 0 * * *' # Every day at midnight UTC
-  workflow_dispatch: # Allows manual triggering of the workflow
+  workflow_dispatch: # Allows manual triggering of the workflow from the GitHub Actions tab
 
 jobs:
   ping:
     runs-on: ubuntu-latest
+    
+    # Resolves the issue with JavaScript actions by forcing them to use Node.js 24
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Send Pulse to Supabase (Upsert Activity)
         run: |
-          curl -f -i -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/keep_alive" \
+          # Koristimo POST sa ?on_conflict=id da izbjegnemo 409 grešku (Unique Violation)
+          # Prefer: resolution=merge-2024 osigurava ispravan Upsert na bazi
+          
+          curl -f -i -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/keep_alive?on_conflict=id" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Content-Type: application/json" \
