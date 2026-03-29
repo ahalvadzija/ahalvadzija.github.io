@@ -102,3 +102,13 @@ function showError(inputElement, message) {
     msg.classList.add('text-red-500');
     msg.classList.remove('hidden');
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            handleSubscription();
+        });
+    }
+});
